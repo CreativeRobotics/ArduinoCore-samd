@@ -1,0 +1,43 @@
+#######################################
+# Syntax Coloring Map SPI
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SamDTimer	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+PWMout			KEYWORD2
+setPeriodMatch				KEYWORD2
+enable		KEYWORD2
+configure	KEYWORD2
+setCompare		KEYWORD2
+setTop	KEYWORD2
+invertWave	KEYWORD2
+setCallback	KEYWORD2
+timerHandler	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+TC_CLOCK_PRESCALER_DIV1		  LITERAL1
+TC_CLOCK_PRESCALER_DIV2		  LITERAL1
+TC_CLOCK_PRESCALER_DIV4		  LITERAL1
+TC_CLOCK_PRESCALER_DIV8		  LITERAL1
+TC_CLOCK_PRESCALER_DIV16		LITERAL1
+TC_CLOCK_PRESCALER_DIV64		LITERAL1
+TC_CLOCK_PRESCALER_DIV256		LITERAL1
+TC_CLOCK_PRESCALER_DIV1024	LITERAL1
+
+TC_COUNTER_SIZE_8BIT	      LITERAL1
+TC_COUNTER_SIZE_16BIT		    LITERAL1
+TC_COUNTER_SIZE_32BIT		    LITERAL1
+
+TC_WAVE_GENERATION_NORMAL_FREQ		LITERAL1
+TC_WAVE_GENERATION_MATCH_FREQ		  LITERAL1
+TC_WAVE_GENERATION_NORMAL_PWM 		LITERAL1
+TC_WAVE_GENERATION_MATCH_PWM		  LITERAL1

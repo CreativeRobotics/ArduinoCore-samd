@@ -16,72 +16,112 @@
 
 menu.cache=Cache
 
-# Enactive Torch RT 2 (SAMD51)
-# ------------------------------
-ETRT_2.name=Enactive Torch RT 2 (SAMD51)
-ETRT_2.vid.0=0x239A
-ETRT_2.pid.0=0x8020
-ETRT_2.vid.1=0x239A
-ETRT_2.pid.1=0x0020
-ETRT_2.upload.tool=bossac18
-ETRT_2.upload.protocol=sam-ba
-ETRT_2.upload.maximum_size=507904
-ETRT_2.upload.offset=0x4000
-ETRT_2.upload.use_1200bps_touch=true
-ETRT_2.upload.wait_for_upload_port=true
-ETRT_2.upload.native_usb=true
-ETRT_2.build.mcu=cortex-m4
-ETRT_2.build.f_cpu=120000000L
-ETRT_2.build.usb_product="Adafruit Metro M4"
-ETRT_2.build.usb_manufacturer="Adafruit LLC"
-ETRT_2.build.board=METRO_M4
-ETRT_2.build.core=arduino
-ETRT_2.build.extra_flags=-D__SAMD51J19A__ -DADAFRUIT_METRO_M4_EXPRESS -D__SAMD51__ {build.usb_flags} -D__FPU_PRESENT -DARM_MATH_CM4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
-ETRT_2.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
-ETRT_2.build.openocdscript=openocd_scripts/arduino_zero.cfg
-ETRT_2.build.variant=etrt2
-ETRT_2.build.variant_system_lib=
-ETRT_2.build.vid=0x239A
-ETRT_2.build.pid=0x8020
-ETRT_2.bootloader.tool=openocd
-ETRT_2.bootloader.file=metroM4/bootloader-metro_m4-v2.0.0-adafruit.5.bin
-ETRT_2.compiler.arm.cmsis.ldflags="-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
-ETRT_2.menu.cache.on=Enabled
-ETRT_2.menu.cache.on.build.cache_flags=-DENABLE_CACHE
-ETRT_2.menu.cache.off=Disabled
-ETRT_2.menu.cache.off.build.cache_flags=
 
-# BaseXD51-64 (SAMD51)
+# Enactive Torch RT2 (SAMD51)
 # ------------------------------
-ETRT_2.name=BaseXD51-64 (SAMD51)
-ETRT_2.vid.0=0x239A
-ETRT_2.pid.0=0x8020
-ETRT_2.vid.1=0x239A
-ETRT_2.pid.1=0x0020
-ETRT_2.upload.tool=bossac18
-ETRT_2.upload.protocol=sam-ba
-ETRT_2.upload.maximum_size=507904
-ETRT_2.upload.offset=0x4000
-ETRT_2.upload.use_1200bps_touch=true
-ETRT_2.upload.wait_for_upload_port=true
-ETRT_2.upload.native_usb=true
-ETRT_2.build.mcu=cortex-m4
-ETRT_2.build.f_cpu=120000000L
-ETRT_2.build.usb_product="Adafruit Metro M4"
-ETRT_2.build.usb_manufacturer="Adafruit LLC"
-ETRT_2.build.board=METRO_M4
-ETRT_2.build.core=arduino
-ETRT_2.build.extra_flags=-D__SAMD51J19A__ -DADAFRUIT_METRO_M4_EXPRESS -D__SAMD51__ {build.usb_flags} -D__FPU_PRESENT -DARM_MATH_CM4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
-ETRT_2.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
-ETRT_2.build.openocdscript=openocd_scripts/arduino_zero.cfg
-ETRT_2.build.variant=baseXD51_64
-ETRT_2.build.variant_system_lib=
-ETRT_2.build.vid=0x239A
-ETRT_2.build.pid=0x8020
-ETRT_2.bootloader.tool=openocd
-ETRT_2.bootloader.file=metroM4/bootloader-metro_m4-v2.0.0-adafruit.5.bin
-ETRT_2.compiler.arm.cmsis.ldflags="-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
-ETRT_2.menu.cache.on=Enabled
-ETRT_2.menu.cache.on.build.cache_flags=-DENABLE_CACHE
-ETRT_2.menu.cache.off=Disabled
-ETRT_2.menu.cache.off.build.cache_flags=
+enactive_torch_rt2.name=Enactive Torch RT2 (SAMD51)
+enactive_torch_rt2.vid.0=0x239A
+enactive_torch_rt2.pid.0=0x8020
+enactive_torch_rt2.vid.1=0x239A
+enactive_torch_rt2.pid.1=0x0020
+enactive_torch_rt2.upload.tool=bossac18
+enactive_torch_rt2.upload.protocol=sam-ba
+enactive_torch_rt2.upload.maximum_size=1032192
+enactive_torch_rt2.upload.offset=0x4000
+enactive_torch_rt2.upload.use_1200bps_touch=true
+enactive_torch_rt2.upload.wait_for_upload_port=true
+enactive_torch_rt2.upload.native_usb=true
+enactive_torch_rt2.build.mcu=cortex-m4
+enactive_torch_rt2.build.f_cpu=120000000L
+enactive_torch_rt2.build.usb_product="Enactive Torch RT2"
+enactive_torch_rt2.build.usb_manufacturer="Creative Robotics"
+enactive_torch_rt2.build.board=METRO_M4
+enactive_torch_rt2.build.core=arduino
+enactive_torch_rt2.build.extra_flags=-D__SAMD51J19A__ -DADAFRUIT_METRO_M4_EXPRESS -D__SAMD51__ {build.usb_flags} -D__FPU_PRESENT -DARM_MATH_CM4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
+enactive_torch_rt2.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+enactive_torch_rt2.build.openocdscript=openocd_scripts/arduino_zero.cfg
+enactive_torch_rt2.build.variant=enactive_torch_rt2
+enactive_torch_rt2.build.variant_system_lib=
+enactive_torch_rt2.build.vid=0x239A
+enactive_torch_rt2.build.pid=0x8020
+enactive_torch_rt2.bootloader.tool=openocd
+enactive_torch_rt2.bootloader.file=metroM4/bootloader-metro_m4-v2.0.0-adafruit.5.bin
+enactive_torch_rt2.compiler.arm.cmsis.ldflags="-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
+enactive_torch_rt2.menu.cache.on=Enabled
+enactive_torch_rt2.menu.cache.on.build.cache_flags=-DENABLE_CACHE
+enactive_torch_rt2.menu.cache.off=Disabled
+enactive_torch_rt2.menu.cache.off.build.cache_flags=
+
+
+
+# BaseXD51 64 (SAMD51)
+# ------------------------------
+BASEXD51_64.name=BaseXD51 64 (SAMD51)
+BASEXD51_64.vid.0=0x239A
+BASEXD51_64.pid.0=0x8020
+BASEXD51_64.vid.1=0x239A
+BASEXD51_64.pid.1=0x0020
+BASEXD51_64.upload.tool=bossac18
+BASEXD51_64.upload.protocol=sam-ba
+BASEXD51_64.upload.maximum_size=1032192
+BASEXD51_64.upload.offset=0x4000
+BASEXD51_64.upload.use_1200bps_touch=true
+BASEXD51_64.upload.wait_for_upload_port=true
+BASEXD51_64.upload.native_usb=true
+BASEXD51_64.build.mcu=cortex-m4
+BASEXD51_64.build.f_cpu=120000000L
+BASEXD51_64.build.usb_product="Adafruit Metro M4"
+BASEXD51_64.build.usb_manufacturer="Adafruit LLC"
+BASEXD51_64.build.board=METRO_M4
+BASEXD51_64.build.core=arduino
+BASEXD51_64.build.extra_flags=-D__SAMD51J19A__ -DADAFRUIT_METRO_M4_EXPRESS -D__SAMD51__ {build.usb_flags} -D__FPU_PRESENT -DARM_MATH_CM4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
+BASEXD51_64.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+BASEXD51_64.build.openocdscript=openocd_scripts/arduino_zero.cfg
+BASEXD51_64.build.variant=baseXD51_64
+BASEXD51_64.build.variant_system_lib=
+BASEXD51_64.build.vid=0x239A
+BASEXD51_64.build.pid=0x8020
+BASEXD51_64.bootloader.tool=openocd
+BASEXD51_64.bootloader.file=metroM4/bootloader-metro_m4-v2.0.0-adafruit.5.bin
+BASEXD51_64.compiler.arm.cmsis.ldflags="-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
+BASEXD51_64.menu.cache.on=Enabled
+BASEXD51_64.menu.cache.on.build.cache_flags=-DENABLE_CACHE
+BASEXD51_64.menu.cache.off=Disabled
+BASEXD51_64.menu.cache.off.build.cache_flags=
+
+
+
+# BaseXD21 48 (SAMD21)
+# ------------------------------
+BASEXD21_48.name=BaseXD21 48 (SAMD21)
+BASEXD21_48.vid.0=0x239A
+BASEXD21_48.pid.0=0x8013
+BASEXD21_48.vid.1=0x239A
+BASEXD21_48.pid.1=0x0013
+BASEXD21_48.upload.tool=bossac
+BASEXD21_48.upload.protocol=sam-ba
+BASEXD21_48.upload.maximum_size=262144
+BASEXD21_48.upload.offset=0x2000
+BASEXD21_48.upload.use_1200bps_touch=true
+BASEXD21_48.upload.wait_for_upload_port=true
+BASEXD21_48.upload.native_usb=true
+BASEXD21_48.build.mcu=cortex-m0plus
+BASEXD21_48.build.f_cpu=48000000L
+BASEXD21_48.build.usb_product="Metro M0 Express"
+BASEXD21_48.build.usb_manufacturer="Adafruit LLC"
+BASEXD21_48.build.board=SAMD_ZERO
+BASEXD21_48.build.core=arduino
+BASEXD21_48.build.extra_flags=-D__SAMD21G18A__  -DARDUINO_SAMD_ZERO -DARM_MATH_CM0PLUS -DADAFRUIT_METRO_M0_EXPRESS {build.usb_flags}
+BASEXD21_48.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+BASEXD21_48.build.openocdscript=openocd_scripts/arduino_zero.cfg
+BASEXD21_48.build.variant=baseXD21_48
+BASEXD21_48.build.variant_system_lib=
+BASEXD21_48.build.vid=0x239A
+BASEXD21_48.build.pid=0x8013
+BASEXD21_48.bootloader.tool=openocd
+BASEXD21_48.bootloader.file=metroM4/bootloader-metro_m4-v2.0.0-adafruit.5.bin
+
+
+
+
+

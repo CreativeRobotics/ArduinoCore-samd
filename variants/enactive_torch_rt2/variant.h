@@ -16,8 +16,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _VARIANT_BASEXD51_64_
-#define _VARIANT_BASEXD51_64_
+#ifndef _VARIANT_ENACTIVE_TORCH_RT2_
+#define _VARIANT_ENACTIVE_TORCH_RT2_
 //#ifndef _VARIANT_METRO_M4_
 //#define _VARIANT_METRO_M4_
 
@@ -60,7 +60,7 @@ extern "C"
 
 // Number of pins defined in PinDescription array
 //#define PINS_COUNT           (46u)
-#define NUM_DIGITAL_PINS     (48u)
+#define NUM_DIGITAL_PINS     (46u)
 #define NUM_ANALOG_INPUTS    (8u)
 #define NUM_ANALOG_OUTPUTS   (2u)
 #define analogInputToDigitalPin(p)  ((p < 6u) ? (p) + 14u : -1)
@@ -95,70 +95,71 @@ extern "C"
  */
 
 //Port A (PA00 and PA01 are connected to the 32k OSC)
-#define PA00  (0u)
-#define PA01  (1u)
-#define PA02  (2u)
-#define PA03  (3u)
-#define PA04  (4u)
-#define PA05  (5u)
-#define PA06  (6u)
-#define PA07  (7u)
-#define PA08  (8u)
-#define PA09  (9u)
-#define PA10  (10u)
-#define PA11  (11u)
-#define PA12  (12u)
-#define PA13  (13u)
-#define PA14  (14u)
-#define PA15  (15u)
-#define PA16  (16u)
-#define PA17  (17u)
-#define PA18  (18u)
-#define PA19  (19u)
-#define PA20  (20u)
-#define PA21  (21u)
-#define PA22  (22u)
-#define PA23  (23u)
-#define PA27  (24u)
-#define PA30  (25u)
-#define PA31  (26u)
+#define PA00  (75u)
+#define PA01  (76u)
+#define PA02  (0u)
+#define PA03  (1u)
+#define PA04  (2u)
+#define PA05  (3u)
+#define PA06  (4u)
+#define PA07  (5u)
+#define PA08  (6u)
+#define PA09  (7u)
+#define PA10  (8u)
+#define PA11  (9u)
+#define PA12  (10u)
+#define PA13  (11u)
+#define PA14  (12u)
+#define PA15  (13u)
+#define PA16  (14u)
+#define PA17  (15u)
+#define PA18  (16u)
+#define PA19  (17u)
+#define PA20  (18u)
+#define PA21  (19u)
+#define PA22  (20u)
+#define PA23  (21u)
+#define PA27  (22u)
+#define PA30  (23u)
+#define PA31  (24u)
 
 //Port B
-#define PB00  (27u)
-#define PB01  (28u)
-#define PB02  (29u)
-#define PB03  (30u)
-#define PB04  (31u)
-#define PB05  (32u)
-#define PB06  (33u)
-#define PB07  (34u)
-#define PB08  (35u)
-#define PB09  (36u)
-#define PB10  (37u)
-#define PB11  (38u)
-#define PB12  (39u)
-#define PB13  (40u)
-#define PB14  (41u)
-#define PB15  (42u)
-#define PB16  (43u)
-#define PB17  (44u)
-#define PB22  (45u)
-#define PB23  (46u)
-#define PB30  (47u)
-#define PB31  (48u)
+#define PB00  (25u)
+#define PB01  (26u)
+#define PB02  (27u)
+#define PB03  (28u)
+#define PB04  (29u)
+#define PB05  (30u)
+#define PB06  (31u)
+#define PB07  (32u)
+#define PB08  (33u)
+#define PB09  (34u)
+#define PB10  (35u)
+#define PB11  (36u)
+#define PB12  (37u)
+#define PB13  (38u)
+#define PB14  (39u)
+#define PB15  (40u)
+#define PB16  (41u)
+#define PB17  (42u)
+#define PB22  (43u)
+#define PB23  (44u)
+#define PB30  (45u)
+#define PB31  (46u)
 /*
  * Analog pins
  */
-#define PIN_A0               (3u)
-#define PIN_A1               (59u)
-#define PIN_A2               (60u)
-#define PIN_A3               (61u)
-#define PIN_A4               (62u)
-#define PIN_A5               (56u)
-#define PIN_A6               (4u)  
-#define PIN_A7               (55u)  
-#define PIN_DAC0             (53u)
-#define PIN_DAC1             (54u)
+#define PIN_A0               (1u)  //Sensors
+#define PIN_A1               (57u) //Sensors
+#define PIN_A2               (58u) //Sensors
+#define PIN_A3               (59u) //Sensors
+#define PIN_A4               (60u) //Sensors
+#define PIN_A5               (54u) //Sensors
+#define PIN_A6               (2u)   //Usr Controls
+#define PIN_A7               (53u)  //Batt Mon
+#define PIN_DAC0             (51u)
+#define PIN_DAC1             (52u)
+#define PIN_DAC_EXT_REF      (50u)
 
 static const uint8_t A0  = PIN_A0;
 static const uint8_t A1  = PIN_A1;
@@ -175,9 +176,11 @@ static const uint8_t USERANALOG = PIN_A6;
 static const uint8_t DAC0 = PIN_DAC0;
 static const uint8_t DAC1 = PIN_DAC1;
 
+#define PIN_NEOPIXEL (43u) //SERCOM 1 with DMA
+
 #define ADC_RESOLUTION		12
 #define ADC_TO_VOLTAGE    1240.909f //divide by this to convert raw ADC readings to a voltage
-#define BATTERY_VOLTAGE_SCALE 2.0f //compensate for the potential divider
+#define BATTERY_VOLTAGE_SCALE 0.00119873817f //compensate for the potential divider
 
 // Other pins
 #define PIN_ATN              (35ul)
@@ -187,24 +190,29 @@ static const uint8_t ATN = PIN_ATN;
  * Serial interfaces
  */
 
-// Serial1
-#define PIN_SERIAL1_RX       (40ul)
-#define PIN_SERIAL1_TX       (39ul)
+// Serial1 - wireless
+#define PIN_SERIAL1_RX       (38ul)
+#define PIN_SERIAL1_TX       (37ul)
 #define PAD_SERIAL1_TX       (UART_TX_PAD_0)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
 
+// Serial2 - sensors
+#define PIN_SERIAL2_RX       (28ul)
+#define PIN_SERIAL2_TX       (27ul)
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
+#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
 /*
  * SPI Interfaces
  */
 #define SPI_INTERFACES_COUNT 1
 
-#define PIN_SPI_MISO         (26u)
-#define PIN_SPI_MOSI         (28u)
-#define PIN_SPI_SCK          (9u)
-#define PERIPH_SPI           sercom2
+#define PIN_SPI_MOSI         (6u)
+#define PIN_SPI_SCK          (7u)
+#define PIN_SPI_MISO         (8u)
+#define PERIPH_SPI           sercom0
 #define PAD_SPI_TX           SPI_PAD_0_SCK_1
 #define PAD_SPI_RX           SERCOM_RX_PAD_2
-#define SPI_CS               (37ul)
+#define SPI_CS               (35u)
 
 
 static const uint8_t SS	  = SPI_CS;	
@@ -220,20 +228,28 @@ static const uint8_t SDWP  = (5u) ;
  */
 #define WIRE_INTERFACES_COUNT 1
 
-#define PIN_WIRE_SDA         (12u)
-#define PIN_WIRE_SCL         (13u)
+#define PIN_WIRE_SDA         (10u)
+#define PIN_WIRE_SCL         (11u)
 #define PERIPH_WIRE          sercom2
 #define WIRE_IT_HANDLER      SERCOM2_Handler
-
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
+
+
+//#define PIN_WIRE_SDA         (10u)
+//#define PIN_WIRE_SCL         (11u)
+//#define PERIPH_WIRE          sercom2
+//#define WIRE_IT_HANDLER      SERCOM2_Handler
+
+//static const uint8_t SDA = PIN_WIRE_SDA;
+//static const uint8_t SCL = PIN_WIRE_SCL;
 
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE (49ul)
-#define PIN_USB_DM          (50ul)
-#define PIN_USB_DP          (51ul)
+#define PIN_USB_HOST_ENABLE (47ul)
+#define PIN_USB_DM          (48ul)
+#define PIN_USB_DP          (49ul)
 
 /*
  * I2S Interfaces
@@ -244,42 +260,30 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 #define I2S_DEVICE          0
 #define I2S_CLOCK_GENERATOR 3
 
-#define PIN_I2S_SDO         (21u)
-#define PIN_I2S_SDI         (22u)
-#define PIN_I2S_SCK         (43u)
-#define PIN_I2S_FS          (20u)
-#define PIN_I2S_MCK			    (44u)
-#define PIN_I2S_FS1         (23u)
+#define PIN_I2S_SDO         (19u)
+#define PIN_I2S_SDI         (20u)
+#define PIN_I2S_SCK         (41u)
+#define PIN_I2S_FS          (18u)
+#define PIN_I2S_MCK			    (42u)
+#define PIN_I2S_FS1         (21u)
 
+/*
+ * ETRT-2 DCU Pins
+*/
 
+#define  PIN_USER_SWITCH              (46u)
+#define  PIN_USER_BUTTON              (22u)
+#define  PIN_5V_ENABLE                (45u)
+#define  PIN_PERIPHERAL_POWER_ENABLE  (13u)
+#define  PIN_ESP32_ENABLE             (40u)
+#define  PIN_ESP_BOOT                 (39u)
+#define  PIN_IMU_INT                  (12u)
 
 //Define all the IOport pins here as well so any drivers can make use of them
-
+//SENSOR PORT
 #define PIN_SP1                       (xxu)
 
-
-//QSPI Pins
-#define PIN_QSPI_SCK	(37u)
-#define PIN_QSPI_CS	(38u)
-#define PIN_QSPI_IO0	(8u)
-#define PIN_QSPI_IO1	(9u)
-#define PIN_QSPI_IO2	(10u)
-#define PIN_QSPI_IO3	(11u)
-
-//PCC Pins
-#define PIN_PCC_DEN1    (12u)
-#define PIN_PCC_DEN2    (13u)
-#define PIN_PCC_CLK     (14u)
-#define PIN_PCC_D0      (16u)
-#define PIN_PCC_D1      (17u)
-#define PIN_PCC_D2      (18u)
-#define PIN_PCC_D3      (19u)
-#define PIN_PCC_D4      (20u)
-#define PIN_PCC_D5      (21u)
-#define PIN_PCC_D6      (22u)
-#define PIN_PCC_D7      (23u)
-#define PIN_PCC_D8      (41u)
-#define PIN_PCC_D9      (42u)
+//HAPTIC PORT
 
 //TODO: meaningful value for this
 #define VARIANT_QSPI_BAUD_DEFAULT 5000000
@@ -305,8 +309,8 @@ extern SERCOM sercom3;
 extern SERCOM sercom4;
 extern SERCOM sercom5;
 
-extern Uart Serial1; 
-extern Uart Serial2; 
+extern Uart Serial1; //Wireless
+extern Uart Serial2; //Sensors
 #endif
 
 // These serial port names are intended to allow libraries and architecture-neutral
@@ -330,5 +334,7 @@ extern Uart Serial2;
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
-#endif /* _VARIANT_BASEXD51_64_ */
+#define SENSOR_SERIAL               Serial2
+#define WIRELESS_SERIAL             Serial1
+#endif /* _VARIANT_ETRT_2_ */
 

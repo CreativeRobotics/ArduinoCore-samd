@@ -37,6 +37,13 @@ typedef enum _eAnalogReference
   AR_INTERNAL2V23
 } eAnalogReference ;
 
+typedef enum _eDACReference
+{
+  DACR_EXT, //External reference unbuffered
+  DACR_VDDANA, //Analog supply
+  DACR_EXT_BUFFERED, //External reference buffered
+  DACR_INT_BANDGAP //Internal bandgap reference
+} _eDACReference ;
 
 /*
  * \brief Configures the reference voltage used for analog input (i.e. the value used as the top of the input range).
@@ -78,6 +85,24 @@ extern void analogReadResolution(int res);
 extern void analogWriteResolution(int res);
 
 extern void analogOutputInit( void ) ;
+
+/*
+ * \brief Sets the DAC voltage reference source.
+ *
+ * \param refType DACR_VDDANA (Analog Voltage Supply Input) does NOT work with the current silicon revision
+ */
+
+extern void setDACRef(_eDACReference refType);
+
+
+/*
+ * \brief Directly sets DAC0 output with the assumption that it has been configured and enabled already
+ *
+ * \param value
+ */
+
+extern void fastAnalogWrite(uint16_t value,  bool channel);
+
 
 #ifdef __cplusplus
 }
