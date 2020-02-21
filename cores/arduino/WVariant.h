@@ -1,17 +1,14 @@
 /*
   Copyright (c) 2015 Arduino LLC.  All right reserved.
   SAMD51 support added by Adafruit - Copyright (c) 2018 Dean Miller for Adafruit Industries
-
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
   version 2.1 of the License, or (at your option) any later version.
-
   This library is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU Lesser General Public License for more details.
-
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
@@ -57,6 +54,8 @@ typedef enum _EAnalogChannel
   ADC_Channel19=19,
   DAC_Channel0,
   DAC_Channel1,
+  ADC_Channel_Bandgap=0x1B,
+  ADC_Channel_PTAT=0x1C,
 } EAnalogChannel ;
 
 #if defined(__SAMD51__)
@@ -99,10 +98,16 @@ typedef enum _ETCChannel
   TCC0_CH3 = (0<<8)|(3),
   TCC0_CH4 = (0<<8)|(4),
   TCC0_CH5 = (0<<8)|(5),
+  TCC0_CH6 = (0<<8)|(6),
+  TCC0_CH7 = (0<<8)|(7),
   TCC1_CH0 = (1<<8)|(0),
   TCC1_CH1 = (1<<8)|(1),
   TCC1_CH2 = (1<<8)|(2),
   TCC1_CH3 = (1<<8)|(3),
+  TCC1_CH4 = (1<<8)|(4),
+  TCC1_CH5 = (1<<8)|(5),
+  TCC1_CH6 = (1<<8)|(6),
+  TCC1_CH7 = (1<<8)|(7),
   TCC2_CH0 = (2<<8)|(0),
   TCC2_CH1 = (2<<8)|(1),
   TCC2_CH2 = (2<<8)|(2),
@@ -122,6 +127,10 @@ typedef enum _ETCChannel
   TC4_CH1 =  (9<<8)|(1),
   TC5_CH0 =  (10<<8)|(0),
   TC5_CH1 =  (10<<8)|(1),
+  TC6_CH0 =  (11<<8)|(0),
+  TC6_CH1 =  (11<<8)|(1),
+  TC7_CH0 =  (12<<8)|(0),
+  TC7_CH1 =  (12<<8)|(1),
 } ETCChannel ;
 
 #elif defined(__SAMD51P19A__) || defined(__SAMD51P20A__)
@@ -198,6 +207,12 @@ typedef enum _ETCChannel
   TC4_CH1  = (4<<8)|(1),
   TC5_CH0  = (5<<8)|(0),
   TC5_CH1  = (5<<8)|(1),
+  #if defined (__SAMD21J18A__) 
+    TC6_CH0  = (6<<8)|(0),
+    TC6_CH1  = (6<<8)|(1),
+    TC7_CH0  = (7<<8)|(0),
+    TC7_CH1  = (7<<8)|(1),
+  #endif // __SAMD21J18A__
 } ETCChannel ;
 
 // Definitions for PWM channels
@@ -290,7 +305,7 @@ typedef enum _EPioType
   PIO_TIMER,            /* The pin is controlled by the associated signal of peripheral E. */
   PIO_TIMER_ALT,        /* The pin is controlled by the associated signal of peripheral F. */
 #if defined(__SAMD51__)
-  PIO_TCC_PDEC,			/* The pin is controlled by the associated signal of peripheral G. */
+  PIO_TCC_PDEC,     /* The pin is controlled by the associated signal of peripheral G. */
   PIO_COM,             /* The pin is controlled by the associated signal of peripheral H. */
   PIO_SDHC,             /* The pin is controlled by the associated signal of peripheral I. */
   PIO_I2S,              /* The pin is controlled by the associated signal of peripheral J. */
@@ -321,7 +336,7 @@ typedef enum _EPioType
 #define PIN_ATTR_TIMER         (1UL<<4)
 #define PIN_ATTR_TIMER_ALT     (1UL<<5)
 #define PIN_ATTR_EXTINT        (1UL<<6)
-#define PIN_ATTR_ANALOG_ALT	   (1UL<<7)
+#define PIN_ATTR_ANALOG_ALT    (1UL<<7)
 
 #if defined(__SAMD51__)
 // these correspond to the mux table

@@ -27,11 +27,11 @@
 // using a ring buffer (I think), in which head is the index of the location
 // to which to write the next incoming character and tail is the index of the
 // location from which to read.
-#if defined(__SAMD51__)
-#define SERIAL_BUFFER_SIZE 1024
-#else	/* samd21 */
-#define SERIAL_BUFFER_SIZE 164
+
+#ifndef SERIAL_BUFFER_SIZE
+#define SERIAL_BUFFER_SIZE 256
 #endif
+
 template <int N>
 class RingBufferN
 {

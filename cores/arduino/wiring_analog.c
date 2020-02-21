@@ -140,38 +140,95 @@ void analogReference(eAnalogReference mode)
 	//TODO: fix gains
 	switch (mode)
 	{
-		case AR_INTERNAL:
-		case AR_INTERNAL2V23:
+		case AR_INTERNAL1V0:
 		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
-		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC0_Val; // 1/1.48 VDDANA = 1/1.48* 3V3 = 2.2297
-		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC0_Val; // 1/1.48 VDDANA = 1/1.48* 3V3 = 2.2297
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_1V0_Val;		// select 1.0V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
+		case AR_INTERNAL1V1:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_1V1_Val;		// select 1.1V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
+		case AR_INTERNAL1V2:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_1V2_Val;		// select 1V2
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
 		break;
 
+		case AR_INTERNAL1V25:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_1V25_Val;		// select 1.25V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
+		case AR_INTERNAL2V0:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_2V0_Val;		// select 2.0V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
+		case AR_INTERNAL2V2:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_2V2_Val;		// select 2.2V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
+		case AR_INTERNAL2V4:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_2V4_Val;		// select 2.4V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
+		case AR_INTERNAL2V5:
+		//ADC0->GAINCORR.reg = ADC_GAINCORR_GAINCORR();      // Gain Factor Selection
+		SUPC->VREF.bit.SEL = SUPC_VREF_SEL_2V5_Val;		// select 2.5V
+		SUPC->VREF.bit.VREFOE = 1;	//	Turn on for use with ADC
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // Use SUPC.VREF
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTREF_Val; // 
+		break;
+		
 		case AR_EXTERNAL:
 		//ADC0->INPUTCTRL.bit.GAIN = ADC_INPUTCTRL_GAIN_1X_Val;      // Gain Factor Selection
-		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_AREFA_Val;
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_AREFA_Val;	// AREF is jumpered to VCC, so 3.3V
 		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_AREFA_Val;
 		break;
 
-/*		Don't think this works on SAMD51
-		case AR_INTERNAL1V0:
-		//ADC0->INPUTCTRL.bit.GAIN = ADC_INPUTCTRL_GAIN_1X_Val;      // Gain Factor Selection
-		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INT1V_Val;   // 1.0V voltage reference
-		break;
-*/
+																		
+											
+																																											 
+																																											
+				
+	
 
 		case AR_INTERNAL1V65:
-		//ADC0->INPUTCTRL.bit.GAIN = ADC_INPUTCTRL_GAIN_1X_Val;      // Gain Factor Selection
-		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC1_Val; // 1/2 VDDANA = 0.5* 3V3 = 1.65V
-		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC1_Val; // 1/2 VDDANA = 0.5* 3V3 = 1.65V
+		//ADC0->INPUTCTRL.bit.GAIN = ADC_INPUTCTRL_GAIN_DIV2_Val;
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC0_Val; // 1/2 VDDANA = 1.65
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC0_Val; // 
 		break;
-
+		
 		case AR_DEFAULT:
 		default:
 		//ADC0->INPUTCTRL.bit.GAIN = ADC_INPUTCTRL_GAIN_DIV2_Val;
-		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC1_Val; // 1/2 VDDANA = 0.5* 3V3 = 1.65V
-		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC1_Val; // 1/2 VDDANA = 0.5* 3V3 = 1.65V
-		
+		ADC0->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC1_Val; // VDDANA = 3V3
+		ADC1->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC1_Val; // 
+	
 		break;
 	}
 	
@@ -179,7 +236,7 @@ void analogReference(eAnalogReference mode)
   syncADC();
   switch (mode)
   {
-    case AR_INTERNAL:
+										 
     case AR_INTERNAL2V23:
       ADC->INPUTCTRL.bit.GAIN = ADC_INPUTCTRL_GAIN_1X_Val;      // Gain Factor Selection
       ADC->REFCTRL.bit.REFSEL = ADC_REFCTRL_REFSEL_INTVCC0_Val; // 1/1.48 VDDANA = 1/1.48* 3V3 = 2.2297
@@ -212,8 +269,8 @@ void analogReference(eAnalogReference mode)
 uint32_t analogRead(uint32_t pin)
 {
   uint32_t valueRead = 0;
-//***********************************************************************************************************************Potential Issue here for CR Boards ...?
-/*#if defined(PIN_A6)
+
+#if defined(PIN_A6)
   if (pin == 6) {
     pin = PIN_A6;
   } else
@@ -225,15 +282,15 @@ uint32_t analogRead(uint32_t pin)
 #endif
   if (pin <= 5) {
     pin += A0;
-  }*/
+  }
 
   pinPeripheral(pin, PIO_ANALOG);
  //ATSAMR, for example, doesn't have a DAC
 #ifdef DAC
 
 	#if defined(__SAMD51__)
-	  if (pin == DAC0 || pin == DAC1) { // Disable DAC, if analogWrite(A0,dval) used previously the DAC is enabled
-		uint8_t channel = (pin == PIN_A0 ? 0 : 1);
+	  if (pin == PIN_DAC0 || pin == PIN_DAC1) { // Disable DAC, if analogWrite(A0,dval) used previously the DAC is enabled
+		uint8_t channel = (pin == PIN_DAC0 ? 0 : 1);
 		
 		if(dacEnabled[channel]){
 			dacEnabled[channel] = false;
@@ -250,7 +307,7 @@ uint32_t analogRead(uint32_t pin)
 		
 		while (DAC->SYNCBUSY.bit.ENABLE);
 	#else
-	  if (pin == DAC0) { // Disable DAC, if analogWrite(A0,dval) used previously the DAC is enabled
+	  if (pin == PIN_DAC0) { // Disable DAC, if analogWrite(A0,dval) used previously the DAC is enabled
 	    syncDAC();
 		
 		DAC->CTRLA.bit.ENABLE = 0x00; // Disable DAC
@@ -358,24 +415,27 @@ void analogWrite(uint32_t pin, uint32_t value)
 
  // ATSAMR, for example, doesn't have a DAC
 #ifdef DAC
-  		
+		
 	  if ((attr & PIN_ATTR_ANALOG) == PIN_ATTR_ANALOG)
 	  {
 	    // DAC handling code
 #if defined(__SAMD51__)
-		if (pin == DAC0 || pin == DAC1) { 
+		if (pin == PIN_DAC0 || pin == PIN_DAC1) { // 2 DACs on A0 (PA02) and A1 (PA05)
 #else
-	    if (pin == DAC0) { // Only 1 DAC on A0 (PA02)
+	    if (pin == PIN_DAC0) { // Only 1 DAC on A0 (PA02)
 #endif
 
 #if defined(__SAMD51__)
 
 	    value = mapResolution(value, _writeResolution, _dacResolution);
-			uint8_t channel = (pin == DAC0 ? 0 : 1);
+
+
+			uint8_t channel = (pin == PIN_DAC0 ? 0 : 1);
+
 			pinPeripheral(pin, PIO_ANALOG);
-				
+
 			if(!dacEnabled[channel]){
-				
+		
 				dacEnabled[channel] = true;
 
 				while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
@@ -392,9 +452,9 @@ void analogWrite(uint32_t pin, uint32_t value)
 					while ( !DAC->STATUS.bit.READY0 );
 
 					while (DAC->SYNCBUSY.bit.DATA0);
-																				
+										
 					DAC->DATA[0].reg = value;
-														
+							
 				}
 				else if(channel == 1){
 
@@ -404,13 +464,15 @@ void analogWrite(uint32_t pin, uint32_t value)
 
 					DAC->DATA[1].reg = value;
 				}
-				delay(10);
-				//delayMicroseconds(10000); //WHY is delayMicroseconds hanging here ..?
+							
+																																					 
 
+				delayMicroseconds(10000);
 			}
 
 			//ERROR!
 			while(!DAC->DACCTRL[channel].bit.ENABLE);
+
 			if(channel == 0){
 
 				while ( !DAC->STATUS.bit.READY0 );
@@ -640,27 +702,31 @@ void analogWrite(uint32_t pin, uint32_t value)
 
 void setDACRef(_eDACReference refType){
 	//set the DAC Voltage Reference
-	while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
-	DAC->CTRLA.bit.ENABLE = 0;     // disable DAC
-	while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
-	
-	switch(refType){
-		case DACR_EXT:
-			DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VREFPU_Val;
-			break;
-		case DACR_VDDANA:
-			DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VDDANA_Val;
-			break;
-		case DACR_EXT_BUFFERED:
-			DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VREFPB_Val;
-			break;
-		case DACR_INT_BANDGAP:
-			DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_INTREF_Val;
-			break;
-	}
-	while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
-	DAC->CTRLA.bit.ENABLE = 1;     // enable DAC
-	while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
+	#if !defined(__SAMD51__)
+		return;
+	#else
+		while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
+		DAC->CTRLA.bit.ENABLE = 0;     // disable DAC
+		while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
+		
+		switch(refType){
+			case DACR_EXT:
+				DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VREFPU_Val;
+				break;
+			case DACR_VDDANA:
+				DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VDDANA_Val;
+				break;
+			case DACR_EXT_BUFFERED:
+				DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_VREFPB_Val;
+				break;
+			case DACR_INT_BANDGAP:
+				DAC->CTRLB.bit.REFSEL = DAC_CTRLB_REFSEL_INTREF_Val;
+				break;
+		}
+		while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
+		DAC->CTRLA.bit.ENABLE = 1;     // enable DAC
+		while (DAC->SYNCBUSY.bit.ENABLE || DAC->SYNCBUSY.bit.SWRST);
+	#endif
 }
 
 void fastAnalogWrite(uint16_t value, bool channel){

@@ -25,8 +25,7 @@ extern "C" {
 
 
 #if defined(__SAMD51__)
-//CHANGE THIS IF YOU CHANGE THE CLOCK SPEED
-uint32_t SystemCoreClock=120000000ul ;
+uint32_t SystemCoreClock=F_CPU;
 #else
 /*
  * System Core Clock is at 1MHz (8MHz/8) at Reset.
@@ -93,7 +92,7 @@ void init( void )
   PM->APBCMASK.reg |= PM_APBCMASK_SERCOM0 | PM_APBCMASK_SERCOM1 | PM_APBCMASK_SERCOM2 | PM_APBCMASK_SERCOM3 | PM_APBCMASK_SERCOM4 | PM_APBCMASK_SERCOM5 ;
 
   // Clock TC/TCC for Pulse and Analog
-  PM->APBCMASK.reg |= PM_APBCMASK_TCC0 | PM_APBCMASK_TCC1 | PM_APBCMASK_TCC2 | PM_APBCMASK_TC3 | PM_APBCMASK_TC4 | PM_APBCMASK_TC5 ;
+  PM->APBCMASK.reg |= PM_APBCMASK_TCC0 | PM_APBCMASK_TCC1 | PM_APBCMASK_TCC2 | PM_APBCMASK_TC3 | PM_APBCMASK_TC4 | PM_APBCMASK_TC5 | PM_APBCMASK_TC6 | PM_APBCMASK_TC7;
 
   // ATSAMR, for example, doesn't have a DAC
   #ifdef PM_APBCMASK_DAC
@@ -102,11 +101,16 @@ void init( void )
   #endif
 #endif
 
+/* 
+  Commented out to leave pins in default tri-state.  This is
+  aimed at avoiding power consumption in DeepSleep.
+  
   // Setup all pins (digital and analog) in INPUT mode (default is nothing)
   for (uint32_t ul = 0 ; ul < NUM_DIGITAL_PINS ; ul++ )
   {
     pinMode( ul, INPUT ) ;
   }
+*/
 
   // Initialize Analog Controller
   // Setting clock

@@ -58,9 +58,9 @@ extern "C"
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (26u)
-#define NUM_DIGITAL_PINS     (20u)
-#define NUM_ANALOG_INPUTS    (8u)
+#define PINS_COUNT           (37u)
+#define NUM_DIGITAL_PINS     (37u)
+#define NUM_ANALOG_INPUTS    (14u)
 #define NUM_ANALOG_OUTPUTS   (1u)
 #define analogInputToDigitalPin(p)  ((p < 6u) ? (p) + 14u : -1)
 
@@ -81,20 +81,62 @@ extern "C"
  */
 // #define digitalPinToTimer(P)
 
-// LEDs
-#define PIN_LED_13           (13u)
-#define PIN_LED_RXL          (31u)
-#define PIN_LED_TXL          (32u)
+#define PIN_LED_13           (20u)
+#define PIN_LED_RXL          (20u)
+#define PIN_LED_TXL          (21u)
 #define PIN_LED              PIN_LED_13
 #define PIN_LED2             PIN_LED_RXL
 #define PIN_LED3             PIN_LED_TXL
 #define LED_BUILTIN          PIN_LED_13
-#define NEOPIXEL_BUILTIN     (40u)
+//#define NEOPIXEL_BUILTIN     (0u)
+
+/* digital pins*/
+//PORT A
+#define PA00	(0u)
+#define PA01	(1u)
+#define PA02	(2u)
+#define PA03	(3u)
+#define PA04	(4u)
+#define PA05	(5u)
+#define PA06	(6u)
+#define PA07	(7u)
+#define PA08	(8u)
+#define PA09	(9u)
+#define PA10	(10u)
+#define PA11	(11u)
+#define PA12	(12u)
+#define PA13	(13u)
+#define PA14	(14u)
+#define PA15	(15u)
+#define PA16	(16u)
+#define PA17	(17u)
+#define PA18	(18u)
+#define PA19	(19u)
+#define PA20	(20u)
+#define PA21	(21u)
+#define PA22	(22u)
+#define PA23	(23u)
+#define PA24	(24u)
+#define PA25	(25u)
+#define PA27	(26u)
+#define PA28	(27u)
+#define PA30	(28u)
+#define PA31	(29u)
+
+//PORT B
+#define PB02	(30u)
+#define PB03	(31u)
+#define PB08	(32u)
+#define PB09	(33u)
+#define PB10	(34u)
+#define PB11	(35u)
+#define PB22	(36u)
+#define PB23	(37u)
 
 /*
  * Analog pins
  */
-#define PIN_A0               (14ul)
+#define PIN_A0               (41u)
 #define PIN_A1               (PIN_A0 + 1)
 #define PIN_A2               (PIN_A0 + 2)
 #define PIN_A3               (PIN_A0 + 3)
@@ -106,7 +148,10 @@ extern "C"
 #define PIN_A9               (PIN_A0 + 9)
 #define PIN_A10              (PIN_A0 + 10)
 #define PIN_A11              (PIN_A0 + 11)
-#define PIN_DAC0             (14ul)
+#define PIN_A12              (PIN_A0 + 12)
+#define PIN_A13              (PIN_A0 + 13)
+#define PIN_A14              (PIN_A0 + 14)
+#define PIN_DAC0             (58u)
 
 static const uint8_t A0  = PIN_A0;
 static const uint8_t A1  = PIN_A1;
@@ -120,6 +165,9 @@ static const uint8_t A8  = PIN_A8 ;
 static const uint8_t A9  = PIN_A9 ;
 static const uint8_t A10 = PIN_A10 ;
 static const uint8_t A11 = PIN_A11 ;
+static const uint8_t A12 = PIN_A12 ;
+static const uint8_t A13 = PIN_A13 ;
+static const uint8_t A14 = PIN_A14 ;
 
 static const uint8_t DAC0 = PIN_DAC0;
 
@@ -134,22 +182,32 @@ static const uint8_t ATN = PIN_ATN;
  */
 
 // Serial1
-#define PIN_SERIAL1_RX       (0ul)
-#define PIN_SERIAL1_TX       (1ul)
-#define PAD_SERIAL1_TX       (UART_TX_PAD_2)
-#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_3)
+#define PIN_SERIAL1_TX       (16ul)
+#define PIN_SERIAL1_RX       (17ul)
+#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
 
+// Serial 3
+
+#define PIN_SERIAL3_TX       (22ul)
+#define PIN_SERIAL3_RX       (23ul)
+#define PAD_SERIAL3_TX       (UART_TX_PAD_0)
+#define PAD_SERIAL3_RX       (SERCOM_RX_PAD_1)
 /*
  * SPI Interfaces
  */
-#define SPI_INTERFACES_COUNT 2
+ 
+#define SPI_INTERFACES_COUNT 0
 
-#define PIN_SPI_MISO         (28u)
-#define PIN_SPI_MOSI         (29u)
-#define PIN_SPI_SCK          (30u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_2_SCK_3
-#define PAD_SPI_RX           SERCOM_RX_PAD_0
+//#define PIN_SPI_MISO         (28u)
+//#define PIN_SPI_MOSI         (29u)
+//#define PIN_SPI_SCK          (30u)
+#define PIN_SPI_MISO         (36u)
+#define PIN_SPI_MOSI         (37u)
+#define PIN_SPI_SCK          (38u)
+//#define PERIPH_SPI           sercom4
+//#define PAD_SPI_TX           SPI_PAD_2_SCK_3
+//#define PAD_SPI_RX           SERCOM_RX_PAD_0
 
 static const uint8_t SS	  = PIN_A2 ;	// SERCOM4 last PAD is present on A2 but HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
@@ -157,12 +215,10 @@ static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
 
 
-#define PIN_SPI1_MISO         (36u)
-#define PIN_SPI1_MOSI         (37u)
-#define PIN_SPI1_SCK          (38u)
-#define PERIPH_SPI1           sercom5
-#define PAD_SPI1_TX           SPI_PAD_2_SCK_3
-#define PAD_SPI1_RX           SERCOM_RX_PAD_1
+
+//#define PERIPH_SPI1           sercom5
+//#define PAD_SPI1_TX           SPI_PAD_2_SCK_3
+//#define PAD_SPI1_RX           SERCOM_RX_PAD_1
 
 static const uint8_t SS1   = 39 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI1 = PIN_SPI_MOSI ;
@@ -173,12 +229,13 @@ static const uint8_t SCK1  = PIN_SPI_SCK ;
 /*
  * Wire Interfaces
  */
-#define WIRE_INTERFACES_COUNT 1
+
+#define WIRE_INTERFACES_COUNT 0
 
 #define PIN_WIRE_SDA         (26u)
 #define PIN_WIRE_SCL         (27u)
-#define PERIPH_WIRE          sercom3
-#define WIRE_IT_HANDLER      SERCOM3_Handler
+//#define PERIPH_WIRE          sercom3
+//#define WIRE_IT_HANDLER      SERCOM3_Handler
 
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
@@ -193,13 +250,7 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 /*
  * I2S Interfaces
  */
-#define I2S_INTERFACES_COUNT 1
 
-#define I2S_DEVICE          0
-#define I2S_CLOCK_GENERATOR 3
-#define PIN_I2S_SD          (9u)
-#define PIN_I2S_SCK         (1u)
-#define PIN_I2S_FS          (0u)
 
 #ifdef __cplusplus
 }
@@ -222,8 +273,9 @@ extern SERCOM sercom3;
 extern SERCOM sercom4;
 extern SERCOM sercom5;
 
-extern Uart Serial5;
+//extern Uart Serial1
 extern Uart Serial1;
+extern Uart Serial3;
 
 #endif
 
@@ -247,6 +299,7 @@ extern Uart Serial1;
 // Serial has no physical pins broken out, so it's not listed as HARDWARE port
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
+
 
 #endif /* _VARIANT_BASEXD21_48_ */
 
